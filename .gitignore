@@ -1,0 +1,21 @@
+# Java / Maven
+target/
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Logs
+*.log
+
+# Env files
+.env
+application-local.properties
+
+# Node / Tailwind or generated assets
+node_modules/
+dist/
+tailwindcss
+

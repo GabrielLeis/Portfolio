@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Clases Personalizadas */
+
+@utility screen-minus-header {
+    height: calc(100vh - 5rem);
+}
