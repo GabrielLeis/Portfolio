@@ -2,6 +2,15 @@
 
 /* Clases Personalizadas */
 
-@utility screen-minus-header {
-    height: calc(100vh - 5rem);
+/* Tu clase original */
+.screen-minus-header {
+    height: calc(100vh - 5rem); /* Altura del header, ajusta a tu valor real */
 }
+
+/* Mejora para móviles */
+@supports (height: 100dvh) {
+    .screen-minus-header {
+        height: calc(100dvh - 5rem);
+    }
+}
+

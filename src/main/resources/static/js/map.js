@@ -1,40 +1,48 @@
 //MAPA
 const map = L.map('map').setView([42.2,-8.6], 15);
+
 //ICONO PERSONALIZADO
 const myIcon = L.icon({
     iconUrl: '/images/icons/pin-location.png',
-    iconSize: [40, 40],          // puedes ajustar según el tamaño real
-    iconAnchor: [20, 40],        // centro inferior
-    popupAnchor: [0, -40]        // para que el popup salga sobre el pin
+    iconSize: [40, 40], 
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
 });
+
 //UBICACIÓN DEL USUARIO
-let userMarker = null; // marcador global para la "ubicación simulada"
+let userMarker = null; // Marcador global para la ubicación simulada
+
 //MOSTRAR RUTA
 var currentRoute = null;
+
 //DESTINO DEL BUSCADOR DE SITIOS
 let destinoMarker = null;
+
 //BASE SELECCIONADA (int - base.id)
 var selectedBase;
+
 //VEHICULO SELECCIONADO (int - vehicle.id)
 var selectedVehicle;
+
 //EVENT LISTENER CUANDO CARGA EL DOM
 document.addEventListener("DOMContentLoaded", async () => {
-
+    
     initMap();
     showBaseList();
     initGeoLocation();
     travelSimulator();
-
 })
 //INICIALIZAR MAPA DE LEAFLET
 function initMap(){
-    // MAPA DE LEAFLET
+    // Mapa de leaflet
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 }
-//RANDOMIZADOR DE VALORES DE VIAJE
+
+// RANDOMIZADOR DE VALORES DE VIAJE
 async function vehicleUsageSimulator() {
+
     // Obtener el vehiculo mediante el id y luego cambiarle los valores
     const basesResponse = await fetch('/api/bases');
     const bases = await basesResponse.json();
@@ -53,7 +61,7 @@ async function vehicleUsageSimulator() {
                 .then(async data => {
                     console.log('Vehículo actualizado:', data);
 
-                    // ➕ Obtener dirección de destino
+                    // Obtener dirección de destino
                     const destino = document.getElementById('destinoInput').value;
                     if (!destino) {
                         alert('Por favor, ingresa un destino válido');
@@ -90,7 +98,8 @@ async function vehicleUsageSimulator() {
         });
     });
 }
-//SIMULACION DE VIAJE
+
+// SIMULACION DE VIAJE
 function travelSimulator(){
     //Escuchamos por evento de click en el botón de SIMULADOR
     document.getElementById('viajarBtn').addEventListener('click', () => {
@@ -123,7 +132,8 @@ function travelSimulator(){
     }
     });
 }
-//MOSTRAR LISTA DE BASES
+
+// MOSTRAR LISTA DE BASES
 async function showBaseList(){
     //FETCH DE LAS BASES
     const basesResponse = await fetch('/api/bases');
@@ -140,14 +150,14 @@ async function showBaseList(){
 
         //Lista lateral de bases
         const li = document.createElement("li");
-        li.className = "cursor-pointer hover:text-blue-400";
+        li.className = "pl-2 cursor-pointer hover:text-blue-400";
         li.textContent = `• Base Id: ${b.id}`;
             
         li.addEventListener("click", () => {
             console.log("click en:", b.id);
             map.setView([b.coords.x, b.coords.y], 15);
             marker.openPopup();
-            //AQUI TENDRIA QUE PASAR EL LIST DE VEHICLES DE LA BASE
+            // Aqui tendria que pasar el list de vehicles de la base
             showBaseOverlay(b.vehicles);
             showRoute(b.coords.x, b.coords.y);
             selectedBase = b.id;
@@ -157,7 +167,7 @@ async function showBaseList(){
     });
 }
 
-//MOSTRAR LA RUTA A LA BASE DESDE TU LOCALIZACIÓN ACTUAL
+// MOSTRAR LA RUTA A LA BASE DESDE TU LOCALIZACIÓN ACTUAL
 function showRoute(baseLatitude, baseLongitude){
     navigator.geolocation.getCurrentPosition(pos => {
         const origin = L.latLng(pos.coords.latitude, pos.coords.longitude);
@@ -172,7 +182,8 @@ function showRoute(baseLatitude, baseLongitude){
         }).addTo(map);
     });
 }
-//MOSTRAR DESTINO DE RUTA
+
+// MOSTRAR DESTINO DE RUTA
 async function showDestinationRoute(lat, lon){
     //FETCH DE LAS BASES
     const basesResponse = await fetch('/api/bases');
@@ -193,7 +204,8 @@ async function showDestinationRoute(lat, lon){
         }
     });
 }
-//MOSTRAR ULTIMO ELEMENTO DE LA LISTA DE BASES
+
+// MOSTRAR ULTIMO ELEMENTO DE LA LISTA DE BASES
 async function showLastBase(){
     //Obtener lista de las bases
     const list = document.getElementById('base-list');
@@ -219,8 +231,8 @@ async function showLastBase(){
     //Agregamos el elemento a la lista
     list.appendChild(li);
 }
-//OVERLAY DE LOS VEHICULOS
-//Mostrar Overlay de Vehiculos
+
+// OVERLAY DE LOS VEHICULOS
 function showVehicleOverlay(vehicle) {
     const overlay = document.getElementById('vehicle-info-overlay');
     const vehicleList = document.getElementById('vehicle-info-list');
@@ -261,7 +273,8 @@ function showVehicleOverlay(vehicle) {
         overlay.classList.add('opacity-100');
     }, 10);
 }
-//Esconder Overlay de Vehiculos
+
+// ESCONDER OVERLAY DE VEHICULOS
 function hideVehicleOverlay() {
   const overlay = document.getElementById('vehicle-info-overlay');
 
@@ -272,8 +285,8 @@ function hideVehicleOverlay() {
     overlay.classList.add('hidden');
   }, 500);
 }
+
 //OVERLAY DE LAS BASES
-//Mostrar Overlay de Bases
 function showBaseOverlay(vehicles) {
     const overlay = document.getElementById('base-overlay');
     const vehicleList = document.getElementById('vehicle-list');
@@ -307,7 +320,8 @@ function showBaseOverlay(vehicles) {
         overlay.classList.add('opacity-100');
     }, 10);
 }
-//Esconder Overlay de Bases
+
+//ESCONDER OVERLAY DE BASES
 function hideBaseOverlay() {
   const overlay = document.getElementById('base-overlay');
 
@@ -318,7 +332,8 @@ function hideBaseOverlay() {
     overlay.classList.add('hidden');
   }, 500);
 }
-//Enseña los input para ingresar las coordenadas de la base que se va a crear
+
+//ENSEÑA LOS INPUT PARA INGRESAR LAS COORDENADAS DE LA BASE QUE SE VA A CREAR
 function showCoordsInput(){
     const coordsInput = document.getElementById('coordsInput');
     const coordsButton = document.getElementById('coordsButton');
@@ -333,7 +348,8 @@ function showCoordsInput(){
         coordsButton.classList.add('opacity-100');
     }, 10);
 }
-//Oculta los input de las coordenadas de la base que se creó
+
+// OCULTA LOS INPUT DE LAS COORDENADAS DE LA BASE QUE SE CREÓ
 function hideCoordsInput(){
     const coordsInput = document.getElementById('coordsInput');
     const coordsButton = document.getElementById('coordsButton');
@@ -348,7 +364,8 @@ function hideCoordsInput(){
         coordsButton.classList.add('hidden');
     }, 500);
 }
-//Agregar una base a la lista.
+
+// AGREGAR UNA BASE A LA LISTA
 function addBase(){
     const lat = document.getElementById('lat-coord').value;
     const lon = document.getElementById('lon-coord').value;
@@ -381,6 +398,7 @@ function addBase(){
         }, 100);
     })
 }
+
 //AGREGAR UN SCOOTER A UNA BASE
 async function addScooter(){
     const basesResponse = await fetch('/api/bases');
@@ -422,6 +440,7 @@ async function addScooter(){
         
     }
 }
+
 //AGREGAR UNA BICICLETA A UNA BASE
 async function addBicycle(){
     const basesResponse = await fetch('/api/bases');
@@ -463,6 +482,7 @@ async function addBicycle(){
         
     }
 }
+
 //AÑADIR FONDOS PARA CLIENTES
 let open = false;
 function addFunds() {
@@ -519,7 +539,7 @@ function addBalance(funds){
     })
 }
 
-//Obtener geolocalización del usuario
+// OBTENER GEOLOCALIZACIÓN DEL USUARIO
 function initGeoLocation(){
     if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -540,5 +560,29 @@ function initGeoLocation(){
     );
     } else {
         alert("Geolocalización no es soportada en este navegador.");
+    }
+}
+
+// ACTIVAR/DESACTIVAR SLIDE PANEL
+function menuToggle(){
+
+    const slidePanel = document.getElementById('slide-panel');
+    const baseSection = document.getElementById('base-section');
+
+    if (slidePanel.classList.contains('w-12')) {
+        // Abrir
+        slidePanel.classList.remove('w-12');
+        slidePanel.classList.add('w-80');
+        baseSection.classList.add('opacity-100');
+        baseSection.classList.remove('hidden');
+
+    } else {
+        // Cerrar
+        baseSection.classList.remove('opacity-100');
+        setTimeout(() => {
+            slidePanel.classList.remove('w-80');
+            slidePanel.classList.add('w-12');
+           
+        }, 150);
     }
 }

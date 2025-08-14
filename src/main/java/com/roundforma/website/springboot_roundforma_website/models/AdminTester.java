@@ -26,9 +26,9 @@ public class AdminTester implements CommandLineRunner {
             admin.setPassword(passwordEncoder.encode("1234"));
             admin.setRole("ADMIN");
             userRepository.save(admin);
-            System.out.println("✔️ Admin creado con éxito");
+            System.out.println("-- Admin creado con éxito --");
         } else {
-            System.out.println("ℹ️ Admin ya existe");
+            System.out.println("-- Admin ya existe --");
         }
     }
 

@@ -9,8 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import com.roundforma.website.springboot_roundforma_website.models.CustomUserDetails;
-import com.roundforma.website.springboot_roundforma_website.models.StandardUser;
-import com.roundforma.website.springboot_roundforma_website.models.User;
 import com.roundforma.website.springboot_roundforma_website.models.Vehicle;
 import com.roundforma.website.springboot_roundforma_website.repository.VehicleRepository;
 
