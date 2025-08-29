@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head layout:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+    <!-- Leaflet -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+                    crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+                    crossorigin=""></script>
+    <!-- Leaflet Routing Machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <!--Script de JS-->
+    <script th:src="@{/js/map.js}" defer></script>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class="flex flex-row">
+             <!-- BARRA VERTICAL NEGRA -->
+            <div id="slide-panel" class="relative top-0 left-0 h-screen lg:h-[calc(100dvh-6rem)] w-12 bg-black flex flex-col items-center transition-all duration-300 ease-in-out overflow-hidden">
+                
+                <!-- BOTÓN HAMBURGER -->
+                <button onclick="menuToggle()" id="menu-toggle" class="mt-2 p-2 bg-black rounded shadow">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white focus:text-blue-400 hover:text-blue-400 hover active:text-blue-400 hover" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <!--SECCION DE BASES-->
+                <div id="base-section" class="relative flex flex-col hidden grow bg-black p-1 w-xs border-t-2 border-white border-dashed
+                         opacity-0 transition-opacity duration-300 ease-in-out">
+                    <!--BASES-->
+                    <h2 class="text-white font-bold text-center text-lg pt-1.5 pb-2">Bases</h2>
+                    <div class="flex-col self-center grow w-60 py-2 mb-2 border-2 border-white border-solid rounded-2xl">
+                        <ul id="base-list" class="text-white"></ul>
+                    </div>
+                    <!--BOTON DE AGREGAR BALANCE-->
+                    <div layout:fragment="addFunds" class="flex justify-center">
+                        <button onclick="addFunds()" class="text-white pt-2 pb-2 border-2 pl-10 pr-10 border-white border-dashed rounded-2xl
+                                hover:text-blue-400 hover:cursor-pointer">Add Funds</button>
+                    </div>  
+                    <!--PESTAÑA AGREGAR FONDOS-->
+                    <div id="addFunds" class="hidden flex absolute justify-center ml-14 bottom-35 left-0 gap-7 opacity-0 transition-opacity duration-500">
+                        <p onclick="addBalance(5.0)" class="text-black text-2xl bg-white rounded-2xl p-2 hover:border-2 hover:border-blue-400 hover:cursor-pointer">€5</p>
+                        <p onclick="addBalance(10.0)" class="text-black text-2xl bg-white rounded-2xl p-2 hover:border-2 hover:border-blue-400 hover:cursor-pointer">€10</p>
+                        <p onclick="addBalance(20.0)" class="text-black text-2xl bg-white rounded-2xl p-2 hover:border-2 hover:border-blue-400 hover:cursor-pointer">€20</p>
+                    </div>  
+                    <!--BALANCE-->
+                    <div layout:fragment="balance" class="flex flex-row justify-between mt-2 px-3">
+                        <h2 class="font-bold text-white">Balance:</h2>
+                        <p class="font-bold text-white pb-3">€ <span id="balance" th:text="${balance}"></span></p>
+                    </div>
+                    <div layout:fragment="addCoords" class="flex"></div>
+                    </div>
+                    <!--SECCION DE VISUALIZACION DE VEHICULOS-->
+                    <div layout:fragment="reserva" id="base-overlay" class="hidden absolute w-xs screen-minus-header bg-black z-10 flex flex-col items-center justify-center
+                                opacity-0 transition-opacity duration-500 text-white">
+                        <h2 class="text-xl font-bold mb-4">Base Vehicles</h2>
+                        <ul id="vehicle-list">Info here</ul>
+                        <div layout:fragment="close-addVehicle">
+                            <button onclick="hideBaseOverlay()" class="mt-6 px-4 py-2 bg-white text-black rounded hover:bg-blue-400 hover:cursor-pointer">Close</button>
+                        </div>
+                    </div>
+                    <!--SECCION DE INFORMACIÓN DEL VEHICULO-->
+                    <div id="vehicle-info-overlay" class="hidden absolute w-xs screen-minus-header bg-black z-10 flex flex-col items-center justify-center
+                                opacity-0 transition-opacity duration-500 text-white">
+                        <h2 class="text-xl font-bold mb-4">Vehicle Info</h2>
+                        <div class="flex flex-col">
+                            <ul id="vehicle-info-list">Info here</ul>
+                            <button onclick="hideVehicleOverlay()" class="mt-6 px-4 py-2 bg-white text-black rounded hover:bg-blue-400 hover:cursor-pointer self-center">Close</button>
+                        </div>
+                        <div layout:fragment="simulator" class="flex flex-col items-center"></div>
+                    </div>
+                </div>
+             <!-- MAPA -->
+            <div class="flex flex-col grow">
+                <div id="map" class="h-[calc(100dvh-0rem)] lg:h-[calc(100dvh-6rem)]"></div>
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title layout:title-pattern="$CONTENT_TITLE - Mi Sitio Web">Base</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="min-h-screen flex flex-col">
+    <header>
+        <div class="bg-black p-4">
+            <h1 class="text-center text-white font-bold text-lg sm:text-xl">&lt;&lt;Java Backend Developer&gt;&gt;</h1>
+            <h2 class="text-center text-white font-bold text-2xl sm:text-3xl md:text-4xl mt-2">GABRIEL LEIS</h2>
+        </div>
+    </header>
+
+    <main layout:fragment="content">
+        <!-- Cuerpo de la página a reemplazar -->
+        <p class="text-base sm:text-lg text-gray-700">Contenido</p>
+    </main>
+
+    <footer layout:fragment="footer" class="bg-gray-900 text-white text-center py-3 text-sm">
+        &copy; 2025 Gabriel Leis. Todos los derechos reservados.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+<section layout:fragment="content">
+    
+    <!-- BOTÓN DEMO -->
+    <div class="flex justify-center text-xl sm:text-2xl lg:text-lg pb-2 pt-5 px-6 text-center">
+        <a href="/login" class="hover:underline underline-offset-4 break-words font-semibold">
+            INICIAR DEMO DE SISTEMA DE GESTIÓN DE VEHÍCULOS
+        </a>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="flex flex-col lg:flex-row flex-wrap place-content-center divide-y-2 gap-3 lg:divide-y-0 lg:divide-x-2 divide-dotted">
+
+        <!-- COLUMNA PROYECTOS -->
+        <div class="flex flex-col items-start pl-6 pr-6 lg:pl-25 max-w-full lg:max-w-sm gap-4 text-left">
+            <div class="flex self-center items-center gap-1.5">
+                <img src="images/icons/work.webp" class="w-5 h-5">
+                <h3 class="font-bold pt-3 lg:pb-2 text-3xl sm:text-4xl lg:text-xl">Proyectos</h3>
+            </div>
+
+            <!-- SISTEMA DE GESTIÓN DE VEHÍCULOS -->
+            <div>
+                <p class="font-bold lg:text-xl">Sistema de Gestión de Vehículos</p>
+                <div class="flex flex-wrap items-center gap-1">
+                    <p class="text-lg lg:text-base">2024 - 2025</p>
+                    <img src="/images/java-logo.png" class="w-10 h-auto">
+                    <img src="/images/spring-logo.png" class="w-5 h-auto">
+                    <p class="text-orange-500">&lt;&gt;</p>
+                    <p class="text-yellow-400 font-bold">JS</p>
+                    <p class="text-blue-300 font-bold">#</p>
+                    <img src="/images/MySQL-logo.png" class="w-5 h-auto">
+                </div>
+                <ul class="list-disc pl-6 text-lg lg:text-base">
+                    <li>Programa de gestión de vehículos y usuarios en una ciudad determinada.</li>
+                </ul>
+            </div>
+
+            <!-- GESTOR DE RESERVAS - COMPLEJO DE APARTAMENTOS -->
+            <div>
+                <p class="font-bold lg:text-xl">Gestor de Reservas - Complejo de apartamentos</p>
+                <div class="flex flex-wrap items-center gap-1">
+                    <p class="text-lg lg:text-base">2024 - 2025</p>
+                    <img src="/images/cpp-logo.png" class="w-5 h-auto">
+                </div>
+                <ul class="list-disc pl-6 text-lg lg:text-base">
+                    <li>Programa para Gestionar Reservas de Apartamentos de Edificios (GesRAE).</li>
+                </ul>
+            </div>
+
+            <!-- iOS APP -->
+            <div>
+                <p class="font-bold lg:text-xl">iOS APP</p>
+                <div class="flex flex-wrap items-center gap-1">
+                    <p class="text-lg lg:text-base">2024 - 2025</p>
+                    <img src="/images/Swift-logo.png" class="w-5 h-auto">
+                </div>
+                <ul class="list-disc pl-6 text-lg lg:text-base">
+                    <li>Health & Fitness App.</li>
+                </ul>
+            </div>
+
+            <!-- SOFTWARE DE NOTIFICACIÓN DE RESERVAS -->
+            <div>
+                <p class="font-bold lg:text-xl">Software de Notificación de Reservas</p>
+                <div class="flex flex-wrap items-center gap-1">
+                    <p class="text-lg lg:text-base">2024 - 2025</p>
+                    <p class="text-orange-500">&lt;&gt;</p>
+                    <p class="text-yellow-400 font-bold">JS</p>
+                    <p class="text-blue-300 font-bold">#</p>
+                    <img src="/images/python-logo.png" class="w-5 h-auto">
+                </div>
+                <ul class="list-disc pl-6 text-lg lg:text-base">
+                    <li>Código integrable de formularios web de notificación de reservas Cliente-Empresa.</li>
+                </ul>
+            </div>
+
+            <!-- CHAT CON IA CON BASE DE DATOS -->
+            <div>
+                <p class="font-bold lg:text-xl">Chat con IA con Base de Datos</p>
+                <div class="flex flex-wrap items-center gap-1">
+                    <p class="text-lg lg:text-base">2024 - 2025</p>
+                    <p class="text-orange-500">&lt;&gt;</p>
+                    <p class="text-yellow-400 font-bold">JS</p>
+                    <p class="text-blue-300 font-bold">#</p>
+                    <img src="/images/python-logo.png" class="w-5 h-auto">
+                    <img src="/images/MySQL-logo.png" class="w-5 h-auto">
+                </div>
+                <ul class="list-disc pl-6 text-lg lg:text-base">
+                    <li>Asistente virtual con IA integrable a páginas web con almacenamiento de chats a una base de datos.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- COLUMNA CONOCIMIENTOS -->
+        <div class="flex flex-col pr-6 lg:pr-15 pl-6 lg:pl-15 items-center max-w-full lg:max-w-sm">
+            <div class="flex items-center gap-1.5">
+                <img src="images/icons/skills.webp" class="size-7 lg:size-5">
+                <h3 class="font-bold pt-3 lg:pb-2 text-3xl sm:text-4xl lg:text-xl">Conocimientos</h3>
+            </div>
+            <div class="w-full max-w-xs lg:grow lg:pt-10">
+                <img src="/images/diagrama.png" class="w-full h-auto">
+            </div>
+            <div class="flex flex-col lg:h-65">
+                <h3 class="font-bold pb-2 lg:pb-2 text-2xl sm:text-4xl lg:text-xl">Proyectos de GitHub</h3>
+                <a href="https://github.com/GabrielLeis" class="text-lg pb-2 lg:text-base hover:underline underline-offset-4 break-words text-center">
+                    github.com/GabrielLeis
+                </a>
+            </div>
+        </div>
+        
+        <!-- COLUMNA CONTACTO -->
+        <div class="flex flex-col px-6 lg:pr-25 lg:max-w-sm">
+            <h3 class="text-3xl sm:text-4xl lg:text-xl self-center font-bold pt-3 pb-3 lg:pb-2">Contacto</h3>
+
+            <div class="flex gap-3 sm:gap-5 pb-3">
+                <img src="/images/icons/contact.webp" class="size-7 lg:size-5">
+                <p class="text-lg sm:text-xl lg:text-base">+34 685 54 24 24</p>
+            </div>
+            <div class="flex gap-3 sm:gap-5 pb-3">
+                <img src="/images/icons/mail.webp" class="size-7 lg:size-5">
+                <p class="text-lg sm:text-xl lg:text-base">gabrielleis@roundforma.com</p>
+            </div>
+            <div class="flex gap-3 sm:gap-5 pb-3">
+                <img src="/images/icons/web.webp" class="size-7 lg:size-5">
+                <a href="https://roundforma.com" class="hover:underline underline-offset-4 break-words text-lg sm:text-xl lg:text-base">
+                    roundforma.com
+                </a>
+            </div>
+            <div class="flex gap-3 sm:gap-5 lg:pb-5">
+                <img src="/images/icons/contact-2.webp" class="w-12 h-auto lg:size-5">
+                <a href="https://www.linkedin.com/in/gabriel-leis/" class="hover:underline underline-offset-4 break-words text-lg sm:text-xl lg:text-base">
+                    linkedin.com/in/gabriel-leis
+                </a>
+            </div>
+
+            <!-- FORMACIÓN -->
+            <h3 class="text-3xl sm:text-4xl lg:text-xl self-center font-bold pt-5 pb-3">Formación</h3>
+            <p class="font-bold text-lg sm:text-xl lg:text-base">Ingeniería Informática</p>
+            <p class="text-lg sm:text-xl lg:text-base">UNED - Actualidad</p>
+            <p class="font-bold text-lg sm:text-xl lg:text-base">Ingeniería en Tecnologías Industriales</p>
+            <p class="text-lg sm:text-xl lg:text-base lg:pb-5">Universidad de Vigo - 2 años</p>
+
+            <!-- IDIOMAS -->
+            <h3 class="self-center font-bold pt-5 pb-3 text-3xl sm:text-4xl lg:text-xl">Idiomas</h3>
+            <p class="text-lg sm:text-xl lg:text-base">Español - Nativo</p>
+            <p class="text-lg sm:text-xl lg:text-base lg:pb-5">Inglés - C1</p>
+
+            <!-- HABILIDADES -->
+            <h3 class="font-bold self-center pt-5 pb-3 text-3xl sm:text-4xl lg:text-xl">Habilidades</h3>
+            <div class="flex flex-col gap-3">
+                <p class="text-lg sm:text-xl lg:text-base">• Iniciativa y adaptabilidad.</p>
+                <p class="text-lg sm:text-xl lg:text-base">• Facilidad para asumir responsabilidades y dirigir proyectos.</p>
+                <p class="text-lg sm:text-xl lg:text-base">• Pensamiento crítico.</p>
+                <p class="text-lg sm:text-xl lg:text-base">• Capacidad de trabajo en equipo.</p>
+                <p class="text-lg sm:text-xl lg:text-base">• Habilidades analíticas y resolución de problemas.</p>
+            </div>
+        </div>
+    </div>
+
+    <!--DESCRIPCIÓN DE CURRÍCULUM-->
+    <div class="flex flex-col justify-center pt-7 pb-7 pl-6 pr-6">
+        <h3 class="font-bold text-center pb-3 text-3xl sm:text-4xl lg:text-xl">Acerca de mi</h3>
+        <p class="text-lg lg:text-lg lg:px-41.5">
+            Soy un profesional serio y diligente, con experiencia en 
+            desarrollo de proyectos backend con SpringBoot y Flask y análisis de datos con integración de modelos de inteligencia
+            artificial a aplicaciones web.<br><br>
+            Me destaco por mi capacidad de adaptación y enfoque analítico, buscando constantemente formas de optimizar 
+            procesos y aportar valor a cada proyecto en el que participo. Trabajo con flexibilidad, combinando 
+            proactividad y precisión en entornos dinámicos o de baja actividad.<br><br>
+            Me desenvuelvo bien tanto en equipo 
+            como de manera autónoma, estableciendo relaciones de confianza con mis compañeros de trabajo y manteniendo 
+            la calma en situaciones de alta presión. Mi compromiso con la integridad y el servicio me motiva a dar 
+            siempre lo mejor de mí, contribuyendo a entornos laborales seguros, eficientes y éticos.
+        </p>
+    </div>
+
+</section>
+</body>
+</html>

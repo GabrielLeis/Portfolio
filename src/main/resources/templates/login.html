@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class="flex justify-center pt-5">
+            <h1 class="text-2xl font-bold">LOGIN</h1>
+        </div>
+        <div class="flex flex-col grow h-screen items-center">
+             <form th:action="@{/login}" method="post" th:object="${loginForm}">
+                <div class="flex flex-col font-bold">
+                    <label>User:</label>
+                    <input class="border-2 border-solid rounded-xl" type="text" th:field="*{username}" required />
+                </div>
+                <div class="flex flex-col font-bold">
+                    <label>Password:</label>
+                    <input class="border-2 border-solid rounded-xl" type="password" th:field="*{password}" required />
+                </div>
+                <div class="flex justify-center pt-5">
+                    <button class="bg-black text-white hover:text-black hover:bg-white hover:cursor-pointer
+                         rounded-xl pr-3 pl-3 text-xl" type="submit">Entrar</button>
+                </div>
+            </form>
+            <p th:if="${param.error}" class="text-red-600 pt-5">Usuario o contraseña incorrectos ❌</p>
+            <a href="/register"><button class="bg-black text-white hover:text-black hover:bg-white hover:cursor-pointer
+                         rounded-xl pr-3 pl-3 mt-5 text-xl" type="button">Sign In</button></a>
+        </div>
+    </section>
+</body>
+</html>

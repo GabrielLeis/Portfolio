@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class="flex justify-center pt-5 pb-2">
+            <h3 class="text-2xl font-bold">Register</h3>
+        </div>
+        <div class="flex flex-col grow h-screen items-center">
+            <form th:action="@{/register}" method="post" class="gap-1.5">
+                <div class="flex flex-col font-bold">
+                    <label>Create Username</label>
+                    <input class="border-2 border-solid rounded-2xl" type="text" name="username" required />
+                </div>
+                <div class="flex flex-col font-bold">
+                    <label>Create Password</label>
+                    <input class="border-2 border-solid rounded-2xl" type="password" name="password" required />
+                </div>
+                <div class="flex flex-col font-bold">
+                    <label>Email</label>
+                    <input class="border-2 border-solid rounded-2xl" type="email" name="email" required />
+                </div>
+                <div class="flex justify-center pt-5" th:if="${param.error}">
+                    <p class="text-red-600">Usuario ya existente</p>
+                </div>
+                <div class="flex justify-center pt-5">
+                    <button class="bg-black text-white hover:text-black hover:bg-white hover:cursor-pointer
+                         rounded-xl pr-3 pl-3 text-xl" type="submit">Registrar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+</body>
+</html>

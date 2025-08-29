@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN Dashboard</title>
+    <div layout:include="~{layout/dashboard :: head}"></div>
+</head>
+<body>
+    <!--CONTENEDOR DE AÑADIR FONDOS-->
+    <div layout:fragment="addFunds">
+        <button onclick="showCoordsInput()" class="text-white pt-2 pb-2 border-2 pl-10 pr-10 border-white border-dashed rounded-2xl
+                    hover:text-blue-400 hover:cursor-pointer">Add Base</button>
+    </div>
+    <!--CONTENEDOR DE INPUT DE COORDENADAS-->
+    <div layout:fragment="balance">
+        <div id="coordsInput" class="flex w-xs justify-between pt-3 pb-2 hidden opacity-0 transition-opacity duration-500">
+            <p class="text-white">Coords: </p>
+            <input class="w-30 text-white" type="number" id="lat-coord" placeholder="lat">
+            <input class="w-30 text-white" type="number" id="lon-coord" placeholder="lon">
+        </div>
+    </div>
+        <!--CONTENEDOR DE BOTON DE AGREGAR BASE-->
+     <div layout:fragment="addCoords" id="coordsButton" class="flex w-xs justify-center hidden opacity-0 transition-opacity duration-500">
+            <button onclick="addBase()" class="border border-2 border-dashed border-white text-white pl-4 pr-4 
+                            rounded-2xl hover:text-blue-400 hover:cursor-pointer" id="sendCoords">Add</button>
+    </div>
+    <!--CONTENEDOR DE AGREGAR VEHICULO-->
+    <div layout:fragment="close-addVehicle" class="flex flex-col items-center">
+        <button onclick="hideBaseOverlay()" class="mt-6 mb-5 px-4 py-2 bg-white text-black rounded hover:bg-blue-400 hover:cursor-pointer">Close</button>
+        <button onclick="addScooter()" class="text-white pt-2 pb-2 mb-3 border-2 pl-10 pr-10 border-white border-dashed rounded-2xl
+                            hover:text-blue-400 hover:cursor-pointer">Add Scooter</button>
+        <button onclick="addBicycle()" class="text-white pt-2 pb-2 border-2 pl-10 pr-10 border-white border-dashed rounded-2xl
+                            hover:text-blue-400 hover:cursor-pointer">Add Bicycle</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootRoundformaWebsiteApplication<springboot-roundforma-website>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.roundforma.website.springboot_roundforma_website.SpringbootRoundformaWebsiteApplication",
+            "projectName": "springboot-roundforma-website",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootRoundformaWebsiteApplication<springboot-portfolio-website>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.roundforma.website.springboot_roundforma_website.SpringbootRoundformaWebsiteApplication",
+            "projectName": "springboot-portfolio-website",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
