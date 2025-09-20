@@ -7,8 +7,11 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <div class="flex justify-center pt-5">
-            <h1 class="text-2xl font-bold">LOGIN</h1>
+        <div class="flex flex-col items-center pt-5">
+            <h1 class="text-2xl font-bold pb-2">LOGIN</h1>
+            <p class="font-semibold text-lg pb-2">Usuario de prueba</p>
+            <p class="pb-2 font-semibold">👨‍💻:user 🤫:testuser*</p>
+
         </div>
         <div class="flex flex-col grow h-screen items-center">
              <form th:action="@{/login}" method="post" th:object="${loginForm}">
@@ -27,7 +30,7 @@
             </form>
             <p th:if="${param.error}" class="text-red-600 pt-5">Usuario o contraseña incorrectos ❌</p>
             <a href="/register"><button class="bg-black text-white hover:text-black hover:bg-white hover:cursor-pointer
-                         rounded-xl pr-3 pl-3 mt-5 text-xl" type="button">Sign In</button></a>
+                         rounded-xl pr-3 pl-3 mt-5 text-xl" type="button">Sign Up</button></a>
         </div>
     </section>
 </body>
